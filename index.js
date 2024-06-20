@@ -17,7 +17,7 @@ module.exports = fp(
         const responseData = JSON.parse(payload);
         if (responseData.statusCode && (responseData.message || responseData.error)) {
           return JSON.stringify({
-            [codeName]: responseData.statusCode,
+            [codeName]: responseData.code || responseData.statusCode,
             [msgName]: responseData.message || responseData.error
           });
         }
