@@ -13,11 +13,11 @@ module.exports = fp(
     );
     fastify.addHook('onSend', async (request, reply, payload) => {
       const contentType = reply.getHeader('content-type');
-      if (contentType && contentType.indexOf('application/json') > -1) {
+      if (contentType && payload && contentType.indexOf('application/json') > -1) {
         const responseData = JSON.parse(payload);
         if (responseData.statusCode && (responseData.message || responseData.error)) {
           return JSON.stringify({
-            [codeName]: responseData.code || responseData.statusCode,
+            [codeName]: Number.isInteger(Number(responseData.code)) ? Number(responseData.code) : responseData.statusCode || 500,
             [msgName]: responseData.message || responseData.error
           });
         }
