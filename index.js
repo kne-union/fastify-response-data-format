@@ -1,6 +1,6 @@
 import fp from 'fastify-plugin';
 
-const responseData = fp(
+const dataFormat = fp(
   async function (fastify, options) {
     const { codeName, dataName, msgName, codePassValue } = Object.assign(
       {},
@@ -43,4 +43,4 @@ const responseData = fp(
   }
 );
 
-export default responseData;
+export default dataFormat;
