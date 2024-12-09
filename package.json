@@ -1,8 +1,9 @@
 {
   "name": "@kne/fastify-response-data-format",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "用于格式化response-data为json格式并且添加状态码",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "init": "husky",
     "build:md": "npx @kne/md-doc",
