@@ -14,9 +14,9 @@ module.exports = fp(
         fastify.addHook('onSend', async (request, reply, payload) => {
             const contentType = reply.getHeader('content-type');
             try {
-                if (contentType && typeof payload !== 'object' && contentType.indexOf('application/json') > -1) {
+                if (contentType && String(payload) !== '[object Object]' && contentType.indexOf('application/json') > -1) {
                     const responseData = JSON.parse(String(payload));
-                    if (responseData.statusCode && (responseData.message || responseData.error)) {
+                    if (responseData?.statusCode && (responseData.message || responseData.error)) {
                         return JSON.stringify({
                             [codeName]: Number.isInteger(Number(responseData.code)) ? Number(responseData.code) : responseData.statusCode || 500,
                             [msgName]: responseData.message || responseData.error
@@ -24,11 +24,10 @@ module.exports = fp(
                     }
                     return JSON.stringify({
                         [codeName]: codePassValue,
-                        [dataName]: JSON.parse(payload)
+                        [dataName]: JSON.parse(String(payload))
                     });
                 }
-            } catch (e) {
-            }
+            } catch (e) {}
             return payload;
         });
     },
