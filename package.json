@@ -1,6 +1,6 @@
 {
   "name": "@kne/fastify-response-data-format",
-  "version": "0.1.6",
+  "version": "1.0.0",
   "description": "用于格式化response-data为json格式并且添加状态码",
   "main": "index.js",
   "scripts": {
@@ -33,11 +33,11 @@
     "url": "https://github.com/kne-union/fastify-response-data-format/issues"
   },
   "homepage": "https://github.com/kne-union/fastify-response-data-format#readme",
+  "peerDependencies": {
+    "fastify-plugin": ">=5"
+  },
   "devDependencies": {
     "husky": "^9.0.11",
     "prettier": "^3.2.5"
-  },
-  "dependencies": {
-    "fastify-plugin": "^4.5.1"
   }
 }
